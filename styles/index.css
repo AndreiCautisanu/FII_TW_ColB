@@ -54,42 +54,44 @@ nav ul li a.hovered, nav ul li a:hover {
     background-color: #525E75;
 }
 
+.content {
+    display: flex;
+    flex-direction: row;
+}
 
+/* tiles */
 
-
-
-.tile_set {
-    padding-top: 5px;
-    margin-bottom: 2em;
+.tiles-wrapper {
+    padding-top: 15px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    gap: 0.5em;
 }
 
-.tile{
-    padding-top: 0px;
-    margin: 5px;
-    padding-bottom: 10px;
-    width: fit-content;
-    height: fit-content;
-    background-color:rgb(249, 249, 242);
-    border: 5px solid rgb(231, 231, 231);
+.tile {
     position: relative;
     display: inline-block;
+    width: fit-content;
+    height: fit-content;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    margin: 5px;
+    background-color:#ccccb2d2;
+    border: 5px solid #a1a9b8;
 }
 
 .tile:hover {
-    transform: scale(1.02);
-    transition: 0.4s;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 .tile_name {
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 0px;
     text-align: center;
-    color:rgb(41, 38, 38);
+    color:#2d333f;
 }
 
 .tile_img {
@@ -100,4 +102,63 @@ nav ul li a.hovered, nav ul li a:hover {
     height: 250px;
     width: 250px;
     position:relative;
+}
+
+
+
+
+/* filters */
+
+.search-filters {
+    padding-top: 10px;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+}
+
+.row label {
+    color: white;
+}
+
+.search-filters form {
+    max-width: fit-content;
+    max-height: fit-content;
+    font-family: Arial Bold, sans-serif;
+    min-width: 150px;
+}
+
+/* not expanded */
+.search-filters form fieldset {
+    size: 1px;
+    max-height: 0;
+    background-color: #525E75;
+    border: none;
+    outline: 0;
+    padding: 3px;
+    overflow: hidden;
+}
+
+/* expanded */
+.search-filters form input:checked ~ fieldset {
+    max-height: 400px;
+}
+
+.search-filters form .filter-title {
+    display: none;
+}
+
+.search-filters form .filter {
+    display: block;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.search-filters form fieldset input {
+    display: block;
 }
