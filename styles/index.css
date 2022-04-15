@@ -3,6 +3,7 @@
 body {
     margin: 0;
     padding: 0;
+    position: relative;
 }
 
 nav {
@@ -54,9 +55,100 @@ nav ul li a.hovered, nav ul li a:hover {
     background-color: #525E75;
 }
 
+
+footer {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    background-color: #F1DDBF;
+    border-top: 3px solid black;
+    font-family: 'Open Sans', sans-serif;
+    color: #78938A;
+    box-sizing: border-box;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    align-items: center;
+}
+
+#menu {
+    display: none;
+}
+
+nav .menu-btn {
+    display: none;
+    color: #525E75;
+    font-size: 35px;
+    cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+    footer {
+        width: 100%;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    nav .menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        display: block;
+        position: fixed;
+        z-index: 1000;
+        top: 80px;
+        left: -200%;
+
+        width: 100%;
+        height: 75vh;
+        text-align: center;
+        background-color: #F1DDBF;
+    }
+
+    #menu:checked ~ ul {
+        left: 0;
+    }
+
+    nav ul li {
+        width: 100%;
+        margin: 40px 0;
+    }
+}
+
+@media (max-width: 612px) {
+    nav {
+        width: 100%;
+    }
+
+    nav ul li {
+        font-size: 17px;
+    }
+
+    nav .logo {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 469px) {
+    nav {
+        padding: 10px;
+        width: 100vw;
+    }
+
+}
+
+
+
 .content {
     display: flex;
     flex-direction: row;
+    background: radial-gradient(#FFFFFF, #d8d5c5c4)
 }
 
 /* tiles */
@@ -80,6 +172,7 @@ nav ul li a.hovered, nav ul li a:hover {
     margin: 5px;
     background-color:#ccccb2d2;
     border: 5px solid #a1a9b8;
+    margin-bottom: 40px;
 }
 
 .tile:hover {
@@ -88,7 +181,7 @@ nav ul li a.hovered, nav ul li a:hover {
 }
 
 .tile_name {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     margin-bottom: 0px;
     text-align: center;
     color:#2d333f;
@@ -130,6 +223,13 @@ nav ul li a.hovered, nav ul li a:hover {
     max-height: fit-content;
     font-family: Arial Bold, sans-serif;
     min-width: 150px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-right: 15px;
+    margin-top: 10px;
+
+    border: 3px solid black;
+    border-radius: 8px;
 }
 
 /* not expanded */
@@ -140,6 +240,7 @@ nav ul li a.hovered, nav ul li a:hover {
     border: none;
     outline: 0;
     padding: 3px;
+    margin: 5px;
     overflow: hidden;
 }
 
@@ -161,4 +262,33 @@ nav ul li a.hovered, nav ul li a:hover {
 
 .search-filters form fieldset input {
     display: block;
+}
+
+
+
+
+
+/* sample bottle individual page styles */
+
+.bottle-name {
+    position: relative;
+    width: 100%;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    border-bottom: 5px solid #2d333f;
+    border-top: 5px solid #2d333f;
+    background-color: #78938A;
+    padding-bottom: 0;
+}
+
+.bottle-name h2 {
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.bottle-info {
+    display: flex;
+    flex-direction: row;
 }
