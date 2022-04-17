@@ -4,6 +4,8 @@ body {
     margin: 0;
     padding: 0;
     position: relative;
+    min-height: 100vh;
+    overflow-x: scroll;
 }
 
 nav {
@@ -20,6 +22,8 @@ nav {
     padding-left: 90px;
 
     box-sizing: border-box;
+
+    margin: 0 auto;
     
 }
 
@@ -57,7 +61,7 @@ nav ul li a.hovered, nav ul li a:hover {
 
 
 footer {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: row;
     bottom: 0px;
@@ -140,7 +144,6 @@ nav .menu-btn {
         padding: 10px;
         width: 100vw;
     }
-
 }
 
 
@@ -148,7 +151,8 @@ nav .menu-btn {
 .content {
     display: flex;
     flex-direction: row;
-    background: radial-gradient(#FFFFFF, #d8d5c5c4)
+    background: radial-gradient(#FFFFFF, #d8d5c5c4);
+    padding-bottom: 50px;
 }
 
 /* tiles */
@@ -272,7 +276,7 @@ nav .menu-btn {
 
 .bottle-name {
     position: relative;
-    width: 100%;
+    min-width: 100%;
     margin: auto;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 50px;
@@ -291,4 +295,112 @@ nav .menu-btn {
 .bottle-info {
     display: flex;
     flex-direction: row;
+}
+
+.side-col {
+    border: 5px solid white;
+    border-radius: 10px;
+    background-color: #525E75;
+    color: white;
+    padding: 10px;
+    font-family: Helvetica, sans-serif;
+    margin: 10px;
+    min-width: 15vw;
+}
+
+.side-box {
+    border-bottom: 2px solid white;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.side-col button {
+    margin-top: 15px;
+    background-color: #525E75;
+    color: white;
+    width: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    border: 3px solid white;
+    border-radius: 20px;
+    cursor: pointer;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.info-col {
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    margin-right: 10px;
+    font-family: Verdana, sans-serif;;
+}
+
+.info-col img {
+    padding: 5px;
+    width: 240px;
+    height: 240px;
+    float: right;
+    margin-left: 10px;
+}
+
+.info-content {
+    margin-left: 20px;
+    text-align: justify;
+    padding-right: 20px;
+}
+
+.see-also-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+}
+
+.see-also-text {
+    font-family: Helvetica, sans-serif;
+    font-weight: 1000;
+    text-align: center;
+    background-color :#525E75;
+    color: white;
+}
+
+.see-also-col h2 {
+    font-family: Helvetica, sans-serif;
+    font-weight: 1000;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .bottle-info {
+        flex-direction: column;
+    }
+    
+    .see-also-tiles {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: justify;
+    }
+
+    .see-also-col {
+        width: 100%;
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .bottle-name {
+        width: 100vw;
+    }
+
+    .info-col {
+        border: 3px solid black;
+        border-radius: 5px;
+    }
+}
+
+section {
+    border-bottom: 2px solid black;
 }
