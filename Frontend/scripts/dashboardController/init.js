@@ -17,5 +17,11 @@ const getGreeting = () => {
 	return greeting;
 };
 
+const getCollectionCard = (collectionImage, collectionName) => {
+	const cardElement = document.createElement('div');
+
+	return cardElement;
+};
+
 const greetingElem = document.querySelector('.main-greeting');
 greetingElem.innerHTML = `${getGreeting()}, ${userName}!`;
