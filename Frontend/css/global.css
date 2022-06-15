@@ -1,7 +1,10 @@
+* {
+	box-sizing: border-box;
+}
+
 body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	box-sizing: border-box;
 	margin: 0;
 	padding: 24px;
 
@@ -21,6 +24,10 @@ body {
 
 ::-webkit-scrollbar-thumb {
 	background-color: #0148b1;
+}
+
+section {
+	margin: 16px 0;
 }
 
 h1 {
@@ -45,6 +52,7 @@ a {
 	padding: 6px 16px;
 	border-radius: 4px;
 	color: #0148b1;
+	transition: all 0.2s ease-in;
 }
 
 a:visited {
@@ -111,6 +119,7 @@ button {
 	padding: 10px 36px;
 	color: #ffffff;
 	transform: scale(1);
+	transition: all 0.2s ease-in;
 }
 
 button:hover {
@@ -125,7 +134,7 @@ button:disabled {
 }
 
 .page-wrapper {
-	max-width: 768px;
+	max-width: 800px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -154,6 +163,10 @@ button:disabled {
 }
 
 @media (min-width: 768px) {
+	h2 {
+		font-size: 24px;
+	}
+
 	.desktop-only {
 		display: block;
 	}
