@@ -1,0 +1,46 @@
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.decor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.login-form-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	gap: 56px;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.textbox-with-icon {
+	position: relative;
+}
+
+.toggle-password {
+	cursor: pointer;
+	position: absolute;
+	bottom: 0;
+	right: 8px;
+	bottom: 4px;
+}
+
+#password-visible {
+	display: none;
+}
