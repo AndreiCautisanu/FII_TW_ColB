@@ -42,7 +42,16 @@ p {
 
 a {
 	background-color: #e9f3fc;
-	padding: 4px 16px;
+	padding: 6px 16px;
+	border-radius: 4px;
+}
+
+a:visited {
+	color: #0148b1;
+}
+
+a:hover {
+	background-color: #d0e6f8;
 }
 
 label {

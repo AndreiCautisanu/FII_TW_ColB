@@ -7,7 +7,7 @@
 		<meta name="description" content="The client side application for ColB" />
 		<link rel="stylesheet" href="css/login.css" />
 		<link rel="stylesheet" href="css/global.css" />
-		<script src="scripts/loginController/login.js"></script>
+		<script src="scripts/registrationController/register.js"></script>
 		<script src="scripts/loginController/togglePassword.js" defer></script>
 		<script src="scripts/loginController/submitEnabler.js" defer></script>
 	</head>
@@ -55,8 +55,8 @@
 				</svg>
 			</div>
 		</div>
-		<div class="login-form-wrapper">
-			<h1 class="login-title">Welcome back!</h1>
+		<div class="register-form-wrapper">
+			<h1 class="register-title">Create account</h1>
 			<form class="input-container" method="post">
 				<div class="input-wrapper">
 					<label for="username-field">Username</label>
@@ -106,12 +106,12 @@
 			<label class="field-validation-error invisible"
 				>Authentication failed</label
 			>
-			<button class="submit-btn" type="submit" onclick="login()" disabled>
-				Login
+			<button class="submit-btn" type="submit" onclick="register()" disabled>
+				Register
 			</button>
 			<label>
-				Don't have an account?
-				<a href="/Frontend/register.html">Register here</a></label
+				Already have an account?
+				<a href="/Frontend/login.html">Log in here</a></label
 			>
 		</div>
 	</body>

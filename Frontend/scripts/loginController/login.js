@@ -2,7 +2,7 @@
 // send request to API to authenticate user
 // receive JWT in response
 
-const API_URL = 'http://localhost:8000/login';
+const API_URL_LOGIN = 'http://localhost:8000/login';
 
 const login = async () => {
 	// retrieve credentials from input field
@@ -10,7 +10,7 @@ const login = async () => {
 	const password = document.querySelector('#password-field').value;
 
 	if (username && password) {
-		fetch(API_URL, {
+		fetch(API_URL_LOGIN, {
 			method: 'POST',
 			body: JSON.stringify({
 				username,
