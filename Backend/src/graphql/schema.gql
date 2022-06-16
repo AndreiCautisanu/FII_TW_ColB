@@ -1,0 +1,30 @@
+type Query {
+  hello: String!
+  container(id: ID!): Container
+  containers: [Container!]!
+  collection(id: ID!): Collection
+  collections: [Collection!]!
+}
+
+type Container {  
+  id: ID!
+  type: String!
+  name: String!
+  description: String!
+  imageUrl: String!
+  year: Int!
+  price: Float!
+  country: String!
+  hasLabel: Boolean!
+  views: Int!
+  collection: [Collection!]!
+}
+
+type Collection {
+  id: ID!
+  name: String!
+  description: String!
+  imageUrl: String!
+  owner: String!
+  containers: [Container!]!
+}
