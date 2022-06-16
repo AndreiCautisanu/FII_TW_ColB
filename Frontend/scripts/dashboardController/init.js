@@ -2,7 +2,7 @@ const userData = JSON.parse(localStorage.getItem('userData'));
 const userName = userData.username;
 
 // get greeting depending on time of day
-const getGreeting = () => {
+function getGreeting() {
 	const currentTime = new Date().getHours();
 	let greeting;
 
@@ -15,13 +15,17 @@ const getGreeting = () => {
 	}
 
 	return greeting;
-};
+}
 
-const getCollectionCard = (collectionImage, collectionName) => {
+function getCollectionCard(collectionImage, collectionName) {
 	const cardElement = document.createElement('div');
 
 	return cardElement;
-};
+}
 
-const greetingElem = document.querySelector('.main-greeting');
-greetingElem.innerHTML = `${getGreeting()}, ${userName}!`;
+function setGreeting() {
+	const greetingElem = document.querySelector('.main-greeting');
+	greetingElem.innerHTML = `${getGreeting()}, ${userName}! 👋🏻`;
+}
+
+setGreeting();

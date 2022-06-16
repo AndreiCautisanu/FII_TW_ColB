@@ -6,8 +6,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="The client side application for ColB" />
 		<link rel="stylesheet" href="css/global.css" />
-		<link rel="stylesheet" href="css/create-collection.css" />
+		<link rel="stylesheet" href="css/collections.css" />
+		<link rel="stylesheet" href="css/create.css" />
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/inventoryController/submitEnabler.js" defer></script>
+		<script
+			src="scripts/inventoryController/createCollection.js"
+			defer
+		></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
 	</head>
 
 	<body>
@@ -24,7 +31,94 @@
 		</nav>
 
 		<div class="page-wrapper">
-			<h1 class="main-greeting">Create a new collection</h1>
+			<h1 class="main-greeting">➕ Create a new collection 🍶🍶🍶</h1>
+			<form class="collection-add-container" id="collection-add-form">
+				<div class="input-wrapper">
+					<label for="name-field">Name</label>
+					<input type="text" id="name-field" name="name" />
+				</div>
+
+				<div class="input-wrapper">
+					<label for="description-field">Description</label>
+					<textarea
+						type="text"
+						id="description-field"
+						name="description"
+						rows="6"
+						cols="35"
+					></textarea>
+				</div>
+
+				<div class="input-wrapper">
+					<label for="image-field">Image URL</label>
+					<input type="text" id="image-field" name="image" />
+				</div>
+
+				<div>
+					<label for="item-field">Select items to add to collection</label>
+					<div class="selectable-items-wrapper">
+						<div class="collection-card">
+							<img
+								src="https://images.unsplash.com/photo-1585409944718-79b9463b5c0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label">Monkey 47</label>
+						</div>
+						<div class="collection-card">
+							<img
+								src="https://images.unsplash.com/photo-1514362362976-6eaab6068a08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label">Koval classic</label>
+						</div>
+						<div class="collection-card">
+							<img
+								src="https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1017&q=80"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label">Berzelius set of 3</label>
+						</div>
+						<div class="collection-card">
+							<img
+								src="https://images.unsplash.com/photo-1628144526492-788bf37d3495?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label">Jack Daniels no. 7 Whiskey Flask</label>
+						</div>
+						<div class="collection-card">
+							<img
+								src="https://images.unsplash.com/photo-1597301841029-a2162f4e6f9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label">Elegant jet black flask</label>
+						</div>
+						<div class="collection-card">
+							<img
+								src="https://www.wine.com/product/images/w_480,c_fit,q_auto:good,fl_progressive/138409.jpg"
+								alt=""
+							/>
+							<div class="card-gradient"></div>
+							<label class="card-label"
+								>Chateau Latour (1.5 Liter Magnum) 2000</label
+							>
+						</div>
+					</div>
+				</div>
+
+				<button
+					class="submit-btn"
+					type="submit"
+					onclick="createCollection()"
+					disabled
+				>
+					Create collection
+				</button>
+			</form>
 		</div>
 	</body>
 </html>

@@ -1,6 +1,6 @@
 const API_URL_REGISTER = 'http://localhost:8000/register';
 
-const register = async () => {
+async function register() {
 	const username = document.querySelector('#username-field').value;
 	const password = document.querySelector('#password-field').value;
 
@@ -32,4 +32,4 @@ const register = async () => {
 		document.querySelector('#username-field').value = '';
 		document.querySelector('#password-field').value = '';
 	}
-};
+}

@@ -10,6 +10,7 @@
 		<script src="scripts/loginController/login.js"></script>
 		<script src="scripts/loginController/togglePassword.js" defer></script>
 		<script src="scripts/loginController/submitEnabler.js" defer></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
 	</head>
 
 	<body>
@@ -57,7 +58,7 @@
 		</div>
 		<div class="login-form-wrapper">
 			<h1 class="login-title">Welcome back!</h1>
-			<form class="input-container" method="post">
+			<form class="input-container">
 				<div class="input-wrapper">
 					<label for="username-field">Username</label>
 					<input type="text" id="username-field" name="username" />

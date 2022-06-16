@@ -4,7 +4,7 @@
 
 const API_URL_LOGIN = 'http://localhost:8000/login';
 
-const login = async () => {
+async function login() {
 	// retrieve credentials from input field
 	const username = document.querySelector('#username-field').value;
 	const password = document.querySelector('#password-field').value;
@@ -47,4 +47,4 @@ const login = async () => {
 		document.querySelector('#username-field').value = '';
 		document.querySelector('#password-field').value = '';
 	}
-};
+}
