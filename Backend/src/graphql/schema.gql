@@ -1,12 +1,35 @@
 type Query {
-  hello: String!
   container(id: ID!): Container
   containers: [Container!]!
+  containersWithoutCollection: [Container!]!
   collection(id: ID!): Collection
   collections: [Collection!]!
+  user(id: ID!): User
+  users: [User!]!
 }
 
-type Container {  
+type Mutation {
+  addContainer(input: ContainerInput!): Container
+  updateContainer(id: ID!, input: ContainerInput): Container
+  deleteContainer(id: ID!): Container
+  addCollection(input: CollectionInput!): Collection
+  updateCollection(id: ID!, input: CollectionInput): Collection
+  deleteCollection(id: ID!): Collection
+}
+
+input ContainerInput {
+  type: String!
+  name: String!
+  description: String!
+  imageUrl: String!
+  year: Int!
+  price: Float!
+  country: String!
+  hasLabel: Boolean!
+  owner: String!
+}
+
+type Container {
   id: ID!
   type: String!
   name: String!
@@ -16,8 +39,16 @@ type Container {
   price: Float!
   country: String!
   hasLabel: Boolean!
+  owner: String!
   views: Int!
-  collection: [Collection!]!
+}
+
+input CollectionInput {
+  name: String!
+  description: String!
+  imageUrl: String!
+  owner: String!
+  containers: [ID!]!
 }
 
 type Collection {
@@ -26,5 +57,10 @@ type Collection {
   description: String!
   imageUrl: String!
   owner: String!
-  containers: [Container!]!
+  containers: [Container]!
+}
+
+type User {
+  id: ID!
+  username: String!
 }

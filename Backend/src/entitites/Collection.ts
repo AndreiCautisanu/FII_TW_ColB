@@ -18,7 +18,9 @@ class Collection {
   @Column()
   owner!: string;
 
-  @OneToMany(() => Container, (container) => container.collection, { cascade: true })
+  @OneToMany(() => Container, (container) => container.collection, {
+    cascade: true,
+  })
   containers!: Container[];
 }
 

@@ -1,0 +1,9 @@
+.all-collections-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+}
+
+.all-collections-container a {
+	padding: 0;
+}

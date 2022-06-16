@@ -30,11 +30,14 @@ class Container {
   @Column()
   hasLabel!: boolean;
 
+  @Column()
+  owner!: string;
+
   @Column({ default: 0 })
   views: number = 0;
 
   @ManyToOne(() => Collection, (collection) => collection.containers, { nullable: true })
-  collection?: Collection;
+  collection?: Collection | null;
 }
 
 export { Container };
