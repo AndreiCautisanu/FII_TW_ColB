@@ -55,7 +55,6 @@
 }
 
 .card-gradient.selected-card {
-	/* background: #0148b1cc; */
 	outline: 4px solid #0148b1;
 	outline-offset: 1px;
 }

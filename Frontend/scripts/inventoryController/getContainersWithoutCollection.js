@@ -1,6 +1,6 @@
 const containersQuery = `
-query Query($collectionId: ID) {
-    containers(collectionId: $collectionId) { 
+query {
+    containersWithoutCollection { 
         id 
         type
         name
@@ -15,18 +15,16 @@ query Query($collectionId: ID) {
 }
 `;
 
-async function getContainers(
-	collectionId = null,
+async function getContainersWithoutCollection(
 	limit = null,
 	owner = null,
-	wrapperClass = '.all-collections-container',
-	wrapperElement = 'a'
+	wrapperClass = '.selectable-items-wrapper',
+	wrapperElement = 'div'
 ) {
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
 			query: containersQuery,
-			variables: { collectionId },
 		}),
 	});
 
@@ -34,7 +32,7 @@ async function getContainers(
 
 	const collectionsContainer = document.querySelector(wrapperClass);
 
-	let userContainers = items.data.containers;
+	let userContainers = items.data.containersWithoutCollection;
 
 	if (limit) {
 		userContainers = userContainers.slice(0, limit);
@@ -54,12 +52,13 @@ async function getContainers(
 				`/Frontend/containers.html?id=${container.id}`
 			);
 		}
+
 		collectionCard.innerHTML = `<div class="collection-card">
         <img
             src="${container.imageUrl}"
             alt=""
         />
-        <div class="card-gradient"></div>
+        <div class="card-gradient" data-testid=${container.id}></div>
         <label class="card-label">${container.name}</label>
     </div>`;
 		collectionsContainer.prepend(collectionCard);

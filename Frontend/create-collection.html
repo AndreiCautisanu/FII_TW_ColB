@@ -10,12 +10,18 @@
 		<link rel="stylesheet" href="css/create.css" />
 		<script src="scripts/constants.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
-		<script src="scripts/inventoryController/submitEnabler.js" defer></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
+		<script src="scripts/inventoryController/getContainersWithoutCollection.js"></script>
 		<script
 			src="scripts/inventoryController/createCollection.js"
 			defer
 		></script>
-		<script src="scripts/preventFormSubmit.js" defer></script>
+		<script>
+			getContainersWithoutCollection(
+				null,
+				JSON.parse(localStorage.getItem('userData')).username
+			).then(() => setSelectable());
+		</script>
 	</head>
 
 	<body>
@@ -57,58 +63,7 @@
 
 				<div>
 					<label for="item-field">Select items to add to collection</label>
-					<div class="selectable-items-wrapper">
-						<div class="collection-card">
-							<img
-								src="https://images.unsplash.com/photo-1585409944718-79b9463b5c0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=960&q=80"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label">Monkey 47</label>
-						</div>
-						<div class="collection-card">
-							<img
-								src="https://images.unsplash.com/photo-1514362362976-6eaab6068a08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label">Koval classic</label>
-						</div>
-						<div class="collection-card">
-							<img
-								src="https://images.unsplash.com/photo-1554475900-0a0350e3fc7b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1017&q=80"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label">Berzelius set of 3</label>
-						</div>
-						<div class="collection-card">
-							<img
-								src="https://images.unsplash.com/photo-1628144526492-788bf37d3495?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label">Jack Daniels no. 7 Whiskey Flask</label>
-						</div>
-						<div class="collection-card">
-							<img
-								src="https://images.unsplash.com/photo-1597301841029-a2162f4e6f9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label">Elegant jet black flask</label>
-						</div>
-						<div class="collection-card">
-							<img
-								src="https://www.wine.com/product/images/w_480,c_fit,q_auto:good,fl_progressive/138409.jpg"
-								alt=""
-							/>
-							<div class="card-gradient"></div>
-							<label class="card-label"
-								>Chateau Latour (1.5 Liter Magnum) 2000</label
-							>
-						</div>
-					</div>
+					<div class="selectable-items-wrapper"></div>
 				</div>
 
 				<button

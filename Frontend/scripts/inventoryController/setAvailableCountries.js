@@ -196,6 +196,7 @@ const countries = [
 	'Ukraine',
 	'United Arab Emirates',
 	'United Kingdom',
+	'USA',
 	'Uruguay',
 	'Uzbekistan',
 	'Venezuela',
