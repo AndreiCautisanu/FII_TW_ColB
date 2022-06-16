@@ -189,3 +189,16 @@ button:disabled {
 		display: none;
 	}
 }
+
+.delete-container-button {
+	border-radius: 50%;
+	margin-top: 32px;
+	padding: 12px;
+	width: 56px;
+	height: 56px;
+	background-color: #cb3919;
+}
+
+.delete-container-button:hover {
+	background-color: #e25535;
+}

@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import { graphql, buildSchema, GraphQLArgs } from 'graphql';
-import { Any, FindManyOptions, In } from 'typeorm';
+import { In } from 'typeorm';
 import { dataSource } from '../data-source';
 import { Collection } from '../entitites/Collection';
 import { Container } from '../entitites/Container';
@@ -94,7 +94,6 @@ const mutationRootValue = {
     const containers = await dataSource
       .getRepository(Container)
       .find({ where: { id: In(args.input.containers) } });
-    console.log('🚀  -> file: graphql.ts  -> line 58  -> containers', containers);
 
     const collection = await dataSource.getRepository(Collection).save({
       ...args.input,
@@ -146,7 +145,20 @@ const mutationRootValue = {
     const collection = await dataSource
       .getRepository(Collection)
       .findOne({ where: { id: args.id }, relations: { containers: true } });
-    await dataSource.getRepository(Collection).delete({ id: args.id });
+
+    // perform the following operations in a transaction
+    await dataSource.transaction(async (transactionalEntityManager) => {
+      // unlink containers from the collection
+      if (collection?.containers)
+        for (const container of collection!.containers) {
+          await transactionalEntityManager
+            .getRepository(Container)
+            .update({ id: container.id }, { ...container, collection: null });
+        }
+
+      await transactionalEntityManager.getRepository(Collection).delete({ id: args.id });
+    });
+
     return collection;
   },
 };
@@ -156,8 +168,19 @@ const rootValue = {
   ...mutationRootValue,
 };
 
-const evaluateGraphQLQuery = async (query: string, variables?: GraphQLArgs['variableValues']) => {
-  const data = await graphql({ schema, rootValue, source: query, variableValues: variables });
+const evaluateGraphQLQuery = async (
+  query: string,
+  variables?: GraphQLArgs['variableValues'],
+  context?: { username: string }
+) => {
+  const data = await graphql({
+    schema,
+    rootValue,
+    source: query,
+    variableValues: variables,
+    contextValue: context,
+  });
+
   return data;
 };
 
