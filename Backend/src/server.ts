@@ -1,6 +1,12 @@
 import * as HTTP from 'node:http';
 import { evaluateGraphQLQuery } from './graphql/graphql';
 
+function attachCORSHeaders(res: HTTP.ServerResponse) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+}
+
 function handleGraphQL(req: HTTP.IncomingMessage, res: HTTP.ServerResponse) {
   let body = '';
 
@@ -26,6 +32,8 @@ function handleInvalidURL(res: HTTP.ServerResponse) {
 }
 
 const server = new HTTP.Server((req, res) => {
+  attachCORSHeaders(res);
+
   switch (req.url) {
     case '/graphql':
       handleGraphQL(req, res);

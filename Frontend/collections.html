@@ -9,13 +9,12 @@
 		<link rel="stylesheet" href="css/collections.css" />
 		<link rel="stylesheet" href="css/inventory.css" />
 		<script src="scripts/constants.js"></script>
-		<script src="scripts/inventoryController/getCollections.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/inventoryController/queryParamsRetrieval.js"></script>
+		<script src="scripts/inventoryController/getContainers.js"></script>
+		<script src="scripts/inventoryController/getCollection.js"></script>
 		<script>
-			getCollections(
-				JSON.parse(localStorage.getItem('userData')).username,
-				null
-			);
+			getContainers(collectionIdParam);
 		</script>
 	</head>
 
@@ -33,9 +32,9 @@
 		</nav>
 
 		<div class="page-wrapper">
-			<h1 class="main-greeting">Your personal collections 🙌🏻</h1>
-
-			<div class="all-collections-container"></div>
+			<h1 class="main-greeting"></h1>
+			<h2 class="collection-description"></h2>
+			<section class="all-collections-container"></section>
 		</div>
 	</body>
 </html>

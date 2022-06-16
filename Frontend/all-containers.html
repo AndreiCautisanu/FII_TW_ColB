@@ -9,13 +9,10 @@
 		<link rel="stylesheet" href="css/collections.css" />
 		<link rel="stylesheet" href="css/inventory.css" />
 		<script src="scripts/constants.js"></script>
-		<script src="scripts/inventoryController/getCollections.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/inventoryController/getContainers.js"></script>
 		<script>
-			getCollections(
-				JSON.parse(localStorage.getItem('userData')).username,
-				null
-			);
+			getContainers();
 		</script>
 	</head>
 
@@ -33,8 +30,7 @@
 		</nav>
 
 		<div class="page-wrapper">
-			<h1 class="main-greeting">Your personal collections 🙌🏻</h1>
-
+			<h1 class="main-greeting">All collected containers 💯</h1>
 			<div class="all-collections-container"></div>
 		</div>
 	</body>

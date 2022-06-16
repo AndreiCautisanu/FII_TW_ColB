@@ -6,8 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="The client side application for ColB" />
 		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/collections.css" />
 		<link rel="stylesheet" href="css/inventory.css" />
+		<script src="scripts/constants.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/inventoryController/getCollections.js"></script>
+		<script>
+			getCollections();
+		</script>
 	</head>
 
 	<body>
@@ -25,6 +31,7 @@
 
 		<div class="page-wrapper">
 			<h1 class="main-greeting">All collections ✨</h1>
+			<div class="all-collections-container"></div>
 		</div>
 	</body>
 </html>

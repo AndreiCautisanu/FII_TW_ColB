@@ -1,0 +1,40 @@
+.container-image {
+	width: 80vw;
+}
+
+.container-details {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.container-description {
+	margin-bottom: 24px;
+}
+
+label {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+p {
+	color: #021f4a;
+	font-weight: 600;
+}
+
+@media (min-width: 768px) {
+	.container-image {
+		width: 40vw;
+	}
+
+	.container-details {
+		flex-direction: row;
+	}
+}
+
+@media (min-width: 1024px) {
+	.container-image {
+		width: 20vw;
+	}
+}

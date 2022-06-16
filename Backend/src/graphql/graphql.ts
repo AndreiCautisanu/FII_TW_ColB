@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import { graphql, buildSchema, GraphQLArgs } from 'graphql';
-import { In } from 'typeorm';
+import { Any, FindManyOptions, In } from 'typeorm';
 import { dataSource } from '../data-source';
 import { Collection } from '../entitites/Collection';
 import { Container } from '../entitites/Container';
@@ -15,9 +15,19 @@ const queryRootValue = {
     return container;
   },
 
-  async containers(prevObj, args, context, info) {
-    const allContainers = await dataSource.getRepository(Container).find();
-    return allContainers;
+  async containers(args, _, context, info) {
+    if (args.collectionId) {
+      const containersWithinCollection = await dataSource
+        .getRepository(Container)
+        .createQueryBuilder('container')
+        .where('container.collection == :collectionId', { collectionId: args.collectionId })
+        .getMany();
+
+      return containersWithinCollection;
+    } else {
+      const allContainers = await dataSource.getRepository(Container).find();
+      return allContainers;
+    }
   },
 
   async containersWithoutCollection() {

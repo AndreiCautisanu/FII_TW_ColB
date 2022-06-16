@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>ColB - Collecting Bottles on Web</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="The client side application for ColB" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/collections.css" />
+		<link rel="stylesheet" href="css/create.css" />
+		<script src="scripts/constants.js"></script>
+		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script
+			src="scripts/inventoryController/setAvailableCountries.js"
+			defer
+		></script>
+		<script src="scripts/inventoryController/submitEnabler.js" defer></script>
+		<script src="scripts/inventoryController/createItem.js"></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
+	</head>
+
+	<body>
+		<nav class="menu desktop-only">
+			<ul>
+				<li>
+					<a href="/Frontend/index.html" class="menu-item">🏠 Home</a>
+				</li>
+				<li><a href="/Frontend/docs.html" class="menu-item">📄 Docs</a></li>
+				<li>
+					<a href="/Frontend/logout.html" class="menu-item">🚪 Sign out</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="page-wrapper">
+			<h1 class="main-greeting">➕ Add a new container 🍶</h1>
+
+			<section>
+				<form class="item-add-container" id="item-add-form">
+					<div class="input-wrapper">
+						<label for="name-field">Name</label>
+						<input type="text" id="name-field" name="name" />
+					</div>
+
+					<div class="input-wrapper">
+						<label for="description-field">Description</label>
+						<textarea
+							type="text"
+							id="description-field"
+							name="description"
+							rows="6"
+							cols="35"
+						></textarea>
+					</div>
+
+					<div class="input-wrapper">
+						<label for="price-field">Price</label>
+						<input type="number" id="price-field" name="price" min="0" />
+					</div>
+
+					<div class="input-wrapper">
+						<label for="image-field">Image URL</label>
+						<input type="text" id="image-field" name="image" />
+					</div>
+
+					<div class="input-wrapper">
+						<label for="country-field">Country</label>
+						<select name="country" id="country-field"></select>
+					</div>
+
+					<div class="input-wrapper">
+						<label for="year-field">Year</label>
+						<input
+							type="number"
+							id="year-field"
+							name="year"
+							min="1700"
+							max="2022"
+							step="1"
+						/>
+					</div>
+
+					<div class="input-wrapper">
+						<label for="type-field">Type</label>
+						<select name="type" id="type-field">
+							<option value="">--Please choose an option--</option>
+							<option value="champagne">Champagne</option>
+							<option value="wine">Wine</option>
+							<option value="beer">Beer</option>
+							<option value="flask">Flask</option>
+							<option value="chemistry">Chemistry</option>
+							<option value="can">Can</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+
+					<div class="input-wrapper">
+						<div class="radio-wrapper">
+							<input
+								type="radio"
+								id="label-field"
+								name="label"
+								value="true"
+								checked
+							/>
+							<label for="label-field">Yes, it has the label</label>
+						</div>
+
+						<div class="radio-wrapper">
+							<input
+								type="radio"
+								id="no-label-field"
+								name="label"
+								value="false"
+							/>
+							<label for="label-field">No, it does not have the label</label>
+						</div>
+					</div>
+
+					<button
+						class="submit-btn"
+						type="submit"
+						onclick="createItem()"
+						disabled
+					>
+						Add container
+					</button>
+				</form>
+			</section>
+		</div>
+	</body>
+</html>

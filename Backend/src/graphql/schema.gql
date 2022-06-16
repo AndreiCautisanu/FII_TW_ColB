@@ -1,6 +1,6 @@
 type Query {
   container(id: ID!): Container
-  containers: [Container!]!
+  containers(collectionId: ID): [Container!]!
   containersWithoutCollection: [Container!]!
   collection(id: ID!): Collection
   collections: [Collection!]!
