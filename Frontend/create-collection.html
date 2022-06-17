@@ -16,6 +16,7 @@
 			src="scripts/inventoryController/createCollection.js"
 			defer
 		></script>
+		<script src="scripts/exportController/importCollection.js" defer></script>
 		<script>
 			getContainersWithoutCollection(
 				null,
@@ -39,6 +40,19 @@
 
 		<div class="page-wrapper">
 			<h1 class="main-greeting">➕ Create a new collection 🍶🍶🍶</h1>
+			<div class="file-importer">
+				<label for="file">Choose file to upload</label>
+				<input type="file" id="file-field" accept=".json" name="file" />
+				<button
+					class="import-container-button"
+					type="submit"
+					style="margin-bottom: 32px"
+					onclick="importCollection()"
+				>
+					Import from JSON
+				</button>
+			</div>
+			<h2 style="margin-bottom: 32px; margin-top: 0">OR</h2>
 			<form class="collection-add-container" id="collection-add-form">
 				<div class="input-wrapper">
 					<label for="name-field">Name</label>
