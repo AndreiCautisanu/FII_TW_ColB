@@ -15,6 +15,8 @@ query Collection($id: ID!) {
 }
 `;
 
+let currentCollection;
+
 async function getCollection(collectionId = null) {
 	const res = await fetch(API, {
 		method: 'POST',
@@ -44,6 +46,10 @@ async function getCollection(collectionId = null) {
 	if (collectionNameField) {
 		collectionNameField.value = collectionData.name;
 	}
+
+	return collectionData;
 }
 
-getCollection(collectionIdParam);
+getCollection(collectionIdParam).then((collection) => {
+	currentCollection = collection;
+});
