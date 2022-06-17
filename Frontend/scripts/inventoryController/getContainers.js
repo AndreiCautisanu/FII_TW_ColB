@@ -15,8 +15,6 @@ query Query($collectionId: ID) {
 }
 `;
 
-let currentContainers;
-
 async function getContainers(
 	collectionId = null,
 	limit = null,
@@ -52,8 +50,6 @@ async function getContainers(
 	if (limit) {
 		userContainers = userContainers.slice(0, limit);
 	}
-
-	currentContainers = userContainers;
 
 	userContainers.forEach((container) => {
 		const collectionCard = document.createElement(wrapperElement);

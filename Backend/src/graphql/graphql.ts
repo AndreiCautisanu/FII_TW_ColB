@@ -14,6 +14,14 @@ const schema = buildSchema(schemaString);
 const queryRootValue = {
   async container(args, _, context, info) {
     const container = await dataSource.getRepository(Container).findOne({ where: { id: args.id } });
+
+    if (container) {
+      // update container views
+      await dataSource
+        .getRepository(Container)
+        .update(container.id, { views: container.views + 1 });
+    }
+
     return container;
   },
 
