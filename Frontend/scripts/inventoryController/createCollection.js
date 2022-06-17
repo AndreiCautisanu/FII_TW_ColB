@@ -89,5 +89,7 @@ async function createCollection() {
 
 	console.log(createdCollection);
 
-	window.location.replace('/Frontend/personal-collections.html');
+	window.location.replace(
+		`/Frontend/collections.html?id=${createdCollection.data.addCollection.id}`
+	);
 }

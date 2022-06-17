@@ -28,7 +28,7 @@ async function deleteCollection(collectionId) {
 
 	console.log(deletedCollection);
 
-	// window.location.replace('/Frontend/personal-containers.html');
+	window.location.replace('/Frontend/personal-collections.html');
 }
 
 function setupDeleteButton() {

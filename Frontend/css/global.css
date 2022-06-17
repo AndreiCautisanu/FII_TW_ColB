@@ -190,12 +190,16 @@ button:disabled {
 	}
 }
 
+.edit-container-button,
 .delete-container-button {
 	border-radius: 50%;
 	margin-top: 32px;
 	padding: 12px;
 	width: 56px;
 	height: 56px;
+}
+
+.delete-container-button {
 	background-color: #cb3919;
 }
 

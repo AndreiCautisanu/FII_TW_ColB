@@ -15,6 +15,29 @@ type Mutation {
   addCollection(input: CollectionInput!): Collection
   updateCollection(id: ID!, input: CollectionInput): Collection
   deleteCollection(id: ID!): Collection
+  signUp(input: SignUpInput!): SignUpResponse!
+  signIn(input: SignInInput!): SignInResponse!
+}
+
+input SignUpInput {
+  username: String!
+  password: String!
+}
+
+type SignUpResponse {
+  success: Boolean!
+  error: String
+}
+
+input SignInInput {
+  username: String!
+  password: String
+}
+
+type SignInResponse {
+  success: Boolean!
+  error: String
+  token: String
 }
 
 input ContainerInput {

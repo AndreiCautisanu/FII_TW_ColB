@@ -1,4 +1,6 @@
 import * as fs from 'node:fs';
+import * as crypto from 'node:crypto';
+import * as JWT from 'jsonwebtoken';
 import { graphql, buildSchema, GraphQLArgs } from 'graphql';
 import { In } from 'typeorm';
 import { dataSource } from '../data-source';
@@ -160,6 +162,37 @@ const mutationRootValue = {
     });
 
     return collection;
+  },
+
+  async signUp(args) {
+    // hash password
+    args.input.password = crypto.createHash('sha256').update(args.input.password).digest('hex');
+
+    const user = await dataSource
+      .getRepository(User)
+      .findOne({ where: { username: args.input.username } });
+    if (user) {
+      return { success: false, error: 'User already exists' };
+    }
+
+    await dataSource.getRepository(User).save(args.input);
+    return { success: true };
+  },
+
+  async signIn(args) {
+    const user = await dataSource
+      .getRepository(User)
+      .findOne({ where: { username: args.input.username } });
+    const passwordHash = crypto.createHash('sha256').update(args.input.password).digest('hex');
+
+    if (user && user.password === passwordHash) {
+      return {
+        success: true,
+        token: JWT.sign({ username: user.username }, process.env.JWT_SECRET!),
+      };
+    }
+
+    return { success: false, error: 'Invalid credentials' };
   },
 };
 
