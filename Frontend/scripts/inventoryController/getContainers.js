@@ -20,7 +20,8 @@ async function getContainers(
 	limit = null,
 	owner = null,
 	wrapperClass = '.all-collections-container',
-	wrapperElement = 'a'
+	wrapperElement = 'a',
+	setSelected = false
 ) {
 	const res = await fetch(API, {
 		method: 'POST',
@@ -63,7 +64,9 @@ async function getContainers(
             src="${container.imageUrl}"
             alt=""
         />
-        <div class="card-gradient"></div>
+        <div class="card-gradient ${
+					setSelected ? 'selected-card' : ''
+				}" data-testid=${container.id}></div>
         <label class="card-label">${container.name}</label>
     </div>`;
 		collectionsContainer.prepend(collectionCard);

@@ -1,4 +1,4 @@
-const containersQuery = `
+const containersWithoutCollectionQuery = `
 query {
     containersWithoutCollection { 
         id 
@@ -24,7 +24,7 @@ async function getContainersWithoutCollection(
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
-			query: containersQuery,
+			query: containersWithoutCollectionQuery,
 		}),
 		headers: {
 			Authorization: `Bearer ${localStorage.getItem('jwt')}`,

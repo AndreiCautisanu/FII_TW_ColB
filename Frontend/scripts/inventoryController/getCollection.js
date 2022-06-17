@@ -31,14 +31,19 @@ async function getCollection(collectionId = null) {
 	const collection = await res.json();
 
 	const collectionName = document.querySelector('.main-greeting');
-	const collectionDescription = document.querySelector(
-		'.collection-description'
-	);
+	const collectionNameField = document.querySelector('.name-field');
+	const collectionDescription = document.querySelector('.description-field');
+	const collectionImageUrl = document.querySelector('.image-field');
 
-	console.log(collection);
 	const collectionData = collection.data.collection;
 	collectionName.innerHTML = collectionData.name;
 	collectionDescription.innerHTML = collectionData.description;
+	if (collectionImageUrl) {
+		collectionImageUrl.value = collectionData.imageUrl;
+	}
+	if (collectionNameField) {
+		collectionNameField.value = collectionData.name;
+	}
 }
 
 getCollection(collectionIdParam);

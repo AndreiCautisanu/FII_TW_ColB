@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<title>ColB - Collecting Bottles on Web</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="The client side application for ColB" />
+		<link rel="stylesheet" href="css/global.css" />
+		<link rel="stylesheet" href="css/collections.css" />
+		<link rel="stylesheet" href="css/create.css" />
+		<script src="scripts/constants.js"></script>
+		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
+		<script src="scripts/inventoryController/queryParamsRetrieval.js"></script>
+		<script
+			src="scripts/inventoryController/createCollection.js"
+			defer
+		></script>
+		<script src="scripts/inventoryController/getCollection.js" defer></script>
+		<script
+			src="scripts/inventoryController/updateCollection.js"
+			defer
+		></script>
+		<script src="scripts/inventoryController/getContainersWithoutCollection.js"></script>
+		<script src="scripts/inventoryController/getContainers.js"></script>
+		<script>
+			getContainers(
+				collectionIdParam,
+				null,
+				null,
+				'.selectable-items-wrapper',
+				'div',
+				true
+			);
+			getContainersWithoutCollection(
+				null,
+				JSON.parse(localStorage.getItem('userData')).username
+			).then(() => setSelectable());
+		</script>
+	</head>
+
+	<body>
+		<nav class="menu desktop-only">
+			<ul>
+				<li>
+					<a href="/Frontend/index.html" class="menu-item">🏠 Home</a>
+				</li>
+				<li><a href="/Frontend/docs.html" class="menu-item">📄 Docs</a></li>
+				<li>
+					<a href="/Frontend/logout.html" class="menu-item">🚪 Sign out</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div class="page-wrapper">
+			<h1 class="main-greeting">➕ Create a new collection 🍶🍶🍶</h1>
+			<form class="collection-add-container" id="collection-add-form">
+				<div class="input-wrapper">
+					<label for="name-field">Name</label>
+					<input type="text" id="name-field" class="name-field" name="name" />
+				</div>
+
+				<div class="input-wrapper">
+					<label for="description-field">Description</label>
+					<textarea
+						type="text"
+						id="description-field"
+						class="description-field"
+						name="description"
+						rows="6"
+						cols="35"
+					></textarea>
+				</div>
+
+				<div class="input-wrapper">
+					<label for="image-field">Image URL</label>
+					<input
+						type="text"
+						id="image-field"
+						class="image-field"
+						name="image"
+					/>
+				</div>
+
+				<div>
+					<label for="item-field">Select items to add to collection</label>
+					<div class="selectable-items-wrapper"></div>
+				</div>
+
+				<button
+					class="submit-btn"
+					type="submit"
+					onclick="updateCollection(collectionIdParam)"
+				>
+					Update collection
+				</button>
+			</form>
+		</div>
+	</body>
+</html>
