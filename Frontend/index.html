@@ -19,7 +19,12 @@
 				3,
 				'.collections-wrapper'
 			);
-			getContainers(null, 3, null, '.personal-containers-wrapper');
+			getContainers(
+				null,
+				3,
+				JSON.parse(localStorage.getItem('userData')).username,
+				'.personal-containers-wrapper'
+			);
 		</script>
 	</head>
 

@@ -83,6 +83,10 @@ async function createCollection() {
 			query: collectionCreationQuery,
 			variables: { input: collectionPayload },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const createdCollection = await res.json();

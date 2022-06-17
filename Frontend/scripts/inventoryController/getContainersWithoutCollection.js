@@ -26,6 +26,10 @@ async function getContainersWithoutCollection(
 		body: JSON.stringify({
 			query: containersQuery,
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const items = await res.json();

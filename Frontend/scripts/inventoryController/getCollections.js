@@ -25,6 +25,10 @@ async function getCollections(
 		body: JSON.stringify({
 			query: collectionsQuery,
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const collections = await res.json();
@@ -33,14 +37,14 @@ async function getCollections(
 
 	let userCollections = collections.data.collections;
 
-	if (limit) {
-		userCollections = userCollections.slice(0, limit);
-	}
-
 	if (owner) {
 		userCollections = userCollections.filter(
 			(collection) => collection.owner === owner
 		);
+	}
+
+	if (limit) {
+		userCollections = userCollections.slice(0, limit);
 	}
 
 	userCollections.forEach((collection) => {

@@ -66,6 +66,10 @@ async function updateContainer(containerId) {
 				query: updateContainerQuery,
 				variables: { input: itemPayload, id: containerId },
 			}),
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+				'Content-Type': 'application/json',
+			},
 		});
 
 		const updatedContainer = await res.json();
@@ -85,6 +89,10 @@ async function initUpdateForm(containerId) {
 			query: containerQuery,
 			variables: { id: containerId },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const container = await res.json();

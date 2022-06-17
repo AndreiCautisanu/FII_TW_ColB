@@ -4,7 +4,10 @@ import { evaluateGraphQLQuery } from './graphql/graphql';
 
 function attachCORSHeaders(res: HTTP.ServerResponse) {
 	res.setHeader('Access-Control-Allow-Origin', '*');
-	res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+	res.setHeader('Access-Control-Allow-Headers', [
+		'Content-Type',
+		'Authorization',
+	]);
 	res.setHeader(
 		'Access-Control-Allow-Methods',
 		'GET, POST, PUT, DELETE, OPTIONS'
@@ -82,6 +85,10 @@ function handleInvalidURL(res: HTTP.ServerResponse) {
 
 const server = new HTTP.Server((req, res) => {
 	attachCORSHeaders(res);
+	if (req.method === 'OPTIONS') {
+		res.end();
+		return;
+	}
 
 	switch (req.url) {
 		case '/graphql':

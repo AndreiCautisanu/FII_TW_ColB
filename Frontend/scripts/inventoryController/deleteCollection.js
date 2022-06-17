@@ -22,6 +22,10 @@ async function deleteCollection(collectionId) {
 			query: deleteCollectionQuery,
 			variables: { id: collectionId },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const deletedCollection = await res.json();

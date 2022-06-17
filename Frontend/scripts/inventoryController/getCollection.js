@@ -22,6 +22,10 @@ async function getCollection(collectionId = null) {
 			query: collectionQuery,
 			variables: { id: collectionIdParam },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const collection = await res.json();

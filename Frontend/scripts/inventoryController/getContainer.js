@@ -21,6 +21,10 @@ async function getContainer(containerId = null) {
 			query: containerQuery,
 			variables: { id: containerId },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const container = await res.json();

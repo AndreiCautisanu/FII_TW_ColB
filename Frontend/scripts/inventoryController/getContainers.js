@@ -28,6 +28,10 @@ async function getContainers(
 			query: containersQuery,
 			variables: { collectionId },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const items = await res.json();
@@ -36,14 +40,14 @@ async function getContainers(
 
 	let userContainers = items.data.containers;
 
-	if (limit) {
-		userContainers = userContainers.slice(0, limit);
-	}
-
 	if (owner) {
 		userContainers = userContainers.filter(
-			(collection) => collection.owner === owner
+			(container) => container.owner === owner
 		);
+	}
+
+	if (limit) {
+		userContainers = userContainers.slice(0, limit);
 	}
 
 	userContainers.forEach((container) => {

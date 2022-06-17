@@ -21,6 +21,10 @@ async function deleteContainer(containerId) {
 			query: deleteContainerQuery,
 			variables: { id: containerId },
 		}),
+		headers: {
+			Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+			'Content-Type': 'application/json',
+		},
 	});
 
 	const deletedContainer = await res.json();

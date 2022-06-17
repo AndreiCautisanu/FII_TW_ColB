@@ -50,6 +50,10 @@ async function createContainer() {
 				query: containerQuery,
 				variables: { input: itemPayload },
 			}),
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+				'Content-Type': 'application/json',
+			},
 		});
 
 		const createdContainer = await res.json();
