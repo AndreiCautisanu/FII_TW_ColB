@@ -7,13 +7,20 @@
 		<meta name="description" content="The client side application for ColB" />
 		<link rel="stylesheet" href="css/global.css" />
 		<link rel="stylesheet" href="css/collections.css" />
+		<link rel="stylesheet" href="css/create.css" />
 		<link rel="stylesheet" href="css/inventory.css" />
 		<script src="scripts/constants.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
+		<script src="scripts/preventFormSubmit.js" defer></script>
+		<script
+			src="scripts/inventoryController/setAvailableCountries.js"
+			defer
+		></script>
 		<script src="scripts/inventoryController/getContainers.js"></script>
 		<script>
 			getContainers();
 		</script>
+		<script src="scripts/inventoryController/getFilteredContainers.js"></script>
 	</head>
 
 	<body>
@@ -30,7 +37,88 @@
 		</nav>
 
 		<div class="page-wrapper">
-			<h1 class="main-greeting">All collected containers 💯</h1>
+			<h1 class="main-greeting">Discover everyone's collected containers 💯</h1>
+			<dic class="filter-wrapper">
+				<h2>Filter containers:</h2>
+				<form class="input-wrapper">
+					<div class="input-wrapper">
+						<label for="country-field">Country</label>
+						<select name="country" id="country-field">
+							<option value="all" selected>All</option>
+						</select>
+					</div>
+					<div class="input-wrapper">
+						<label for="year-field">Older than:</label>
+						<input
+							type="number"
+							id="year-field"
+							name="year"
+							min="1700"
+							max="2022"
+							step="1"
+							value="2022"
+						/>
+					</div>
+					<div class="input-wrapper">
+						<label for="label-field">Has label</label>
+						<select name="label" id="label-field">
+							<option value="all" selected>Both</option>
+							<option value="true">Yes</option>
+							<option value="false">No</option>
+						</select>
+					</div>
+					<div class="input-wrapper">
+						<label for="type-field">Type</label>
+						<select name="type" id="type-field">
+							<option value="all" selected>All</option>
+							<option value="champagne">Champagne</option>
+							<option value="wine">Wine</option>
+							<option value="beer">Beer</option>
+							<option value="whiskey">Whiskey</option>
+							<option value="gin">Gin</option>
+							<option value="flask">Flask</option>
+							<option value="chemistry">Chemistry</option>
+							<option value="can">Can</option>
+							<option value="other">Other</option>
+						</select>
+					</div>
+					<div class="input-wrapper">
+						<label for="price-field">Price less than</label>
+						<input
+							type="number"
+							id="price-le-field"
+							name="price-le"
+							min="0"
+							step="0.01"
+							lang="en"
+						/>
+					</div>
+					<div class="input-wrapper">
+						<label for="price-field">Price greater than</label>
+						<input
+							type="number"
+							id="price-ge-field"
+							name="price-ge"
+							min="0"
+							step="0.01"
+							lang="en"
+							value="0"
+						/>
+					</div>
+					<div class="action-buttons">
+						<button
+							class="submit-btn"
+							type="submit"
+							onclick="getFilteredContainers()"
+						>
+							Apply
+						</button>
+						<button class="submit-btn" type="submit" onclick="getStatistics()">
+							See statistics
+						</button>
+					</div>
+				</form>
+			</dic>
 			<div class="all-collections-container"></div>
 		</div>
 	</body>
