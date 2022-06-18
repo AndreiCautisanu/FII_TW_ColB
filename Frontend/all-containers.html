@@ -12,15 +12,22 @@
 		<script src="scripts/constants.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
 		<script src="scripts/preventFormSubmit.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
+		<script src="scripts/exportController/jsonToCsv.js" defer></script>
+		<script src="scripts/exportController/download.js" defer></script>
 		<script
 			src="scripts/inventoryController/setAvailableCountries.js"
 			defer
 		></script>
 		<script src="scripts/inventoryController/getContainers.js"></script>
 		<script>
-			getContainers();
+			let filteredContainers = [];
+			getContainers().then(() => (filteredContainers = currentContainers));
 		</script>
-		<script src="scripts/inventoryController/getFilteredContainers.js"></script>
+		<script
+			src="scripts/inventoryController/getFilteredContainers.js"
+			defer
+		></script>
 	</head>
 
 	<body>

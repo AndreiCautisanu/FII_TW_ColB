@@ -113,24 +113,14 @@ const mutationRootValue = {
     return collection;
   },
 
-  async updateCollection(args, context) {
-    const oldCollection = await dataSource
-      .getRepository(Collection)
-      .findOne({ where: { id: args.id }, relations: { containers: true } });
-
-    // collection not found
-    if (oldCollection === null) {
-      return null;
-    }
-
-    // don't allow collection update if user is not the owner of the collection
-    if (oldCollection.owner !== context.username) {
-      return null;
-    }
-
+  async updateCollection(args) {
     // perform the following operations in a transaction
     await dataSource.transaction(async (transactionalEntityManager) => {
       // delete old containers of this collection
+      const oldCollection = await transactionalEntityManager
+        .getRepository(Collection)
+        .findOne({ where: { id: args.id }, relations: { containers: true } });
+
       for (const container of oldCollection!.containers) {
         await transactionalEntityManager
           .getRepository(Container)
@@ -161,20 +151,10 @@ const mutationRootValue = {
     return collection;
   },
 
-  async deleteCollection(args, context) {
+  async deleteCollection(args) {
     const collection = await dataSource
       .getRepository(Collection)
       .findOne({ where: { id: args.id }, relations: { containers: true } });
-
-    // collection not found
-    if (collection === null) {
-      return null;
-    }
-
-    // don't allow collection deletion if user is not the owner of the collection
-    if (collection.owner !== context.username) {
-      return null;
-    }
 
     // perform the following operations in a transaction
     await dataSource.transaction(async (transactionalEntityManager) => {

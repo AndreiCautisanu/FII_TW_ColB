@@ -15,7 +15,7 @@ query Query($collectionId: ID) {
 }
 `;
 
-let currentContainers;
+let currentContainers = [];
 
 async function getContainers(
 	collectionId = null,
