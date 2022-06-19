@@ -5,6 +5,7 @@
 .collections-carousel-container {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 	flex-wrap: nowrap;
 	gap: 16px;
 	overflow-x: scroll;
@@ -17,13 +18,15 @@
 	height: 0;
 }
 
-.collections-carousel-container a {
+.collections-carousel-container a,
+.page-wrapper a {
 	background-color: transparent;
 	padding: 0;
 	height: 100%;
 }
 
-.collections-carousel-container a:hover {
+.collections-carousel-container a:hover,
+.page-wrapper a:hover {
 	background-color: transparent;
 }
 

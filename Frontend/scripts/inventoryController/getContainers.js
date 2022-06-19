@@ -76,8 +76,15 @@ async function getContainers(
 		collectionsContainer.prepend(collectionCard);
 	});
 
-	if (collectionId) {
+	if (collectionId && document.querySelector('.control-buttons')) {
 		addActionButtons(userContainers[0].owner, collectionId);
+	}
+
+	if (userContainers.length === 0) {
+		const noContainers = document.createElement('div');
+		noContainers.classList.add('no-elements');
+		noContainers.innerHTML = `<div class="no-elements-text" style="margin-bottom: 16px"> No containers collected </div>`;
+		collectionsContainer.prepend(noContainers);
 	}
 }
 
@@ -91,7 +98,7 @@ function addActionButtons(containerOwner, containerId) {
 		editButton.setAttribute('type', 'submit');
 		editButton.setAttribute(
 			'onclick',
-			`window.location.replace(/Frontend/edit-collection.html?id=${containerId})`
+			`window.location.replace('\/Frontend\/edit-collection.html?id=${containerId}')`
 		);
 		editButton.innerHTML = `<svg
 			width="24"

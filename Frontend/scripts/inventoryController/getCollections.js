@@ -63,4 +63,11 @@ async function getCollections(
     </div>`;
 		collectionsContainer.prepend(collectionCard);
 	});
+
+	if (userCollections.length === 0) {
+		const noCollections = document.createElement('div');
+		noCollections.classList.add('no-elements');
+		noCollections.innerHTML = `<div class="no-elements-text" style="margin-bottom: 16px"> No collections added </div>`;
+		collectionsContainer.prepend(noCollections);
+	}
 }

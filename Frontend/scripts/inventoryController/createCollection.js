@@ -11,17 +11,19 @@ const currentData = {
 
 const formFields = [nameField, descriptionField, imageField];
 
-formFields.forEach((field) =>
-	field.addEventListener('change', function (e) {
-		currentData[e.target.name] = e.target.value;
+function validateForm() {
+	formFields.forEach((field) =>
+		field.addEventListener('change', function (e) {
+			currentData[e.target.name] = e.target.value;
 
-		if (Object.values(currentData).every((value) => value)) {
-			submitButton.disabled = false;
-		} else {
-			submitButton.disabled = true;
-		}
-	})
-);
+			if (Object.values(currentData).every((value) => value)) {
+				submitButton.disabled = false;
+			} else {
+				submitButton.disabled = true;
+			}
+		})
+	);
+}
 
 const collectionCreationQuery = `
 mutation AddCollection($input: CollectionInput!) {

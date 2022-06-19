@@ -29,7 +29,7 @@ async function createContainer() {
 		typeof itemPrice === 'number' &&
 		typeof itemYear === 'number' &&
 		itemYear > 1700 &&
-		itemYear < new Date().getFullYear() &&
+		itemYear <= new Date().getFullYear() &&
 		itemPrice > 0
 	) {
 		const itemPayload = {
