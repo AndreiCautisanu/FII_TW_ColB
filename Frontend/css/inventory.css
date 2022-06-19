@@ -15,3 +15,18 @@
 .action-buttons button {
 	margin-top: 0;
 }
+
+.views-tag {
+	margin-top: 8px;
+	font-weight: 600;
+}
+
+.feed-button {
+	margin-top: 32px;
+	background-color: transparent;
+	padding: 0;
+}
+
+.feed-button:hover {
+	background-color: transparent;
+}
