@@ -34,11 +34,3 @@ async function deleteCollection(collectionId) {
 
 	window.location.replace('/Frontend/personal-collections.html');
 }
-
-function setupDeleteButton() {
-	document
-		.querySelector('.delete-container-button')
-		.setAttribute('onclick', `deleteCollection(${collectionIdParam})`);
-}
-
-setupDeleteButton();

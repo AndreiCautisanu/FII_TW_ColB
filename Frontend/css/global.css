@@ -197,6 +197,7 @@ button:disabled {
 	padding: 12px;
 	width: 56px;
 	height: 56px;
+	margin-right: 8px;
 }
 
 .delete-container-button {
