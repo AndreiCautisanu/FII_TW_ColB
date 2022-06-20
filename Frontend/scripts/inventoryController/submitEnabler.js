@@ -1,3 +1,4 @@
+// utils file to enable the submit button only if all the fields are filled
 const submitButton = document.querySelector('.submit-btn');
 const nameField = document.querySelector('#name-field');
 const descriptionField = document.querySelector('#description-field');

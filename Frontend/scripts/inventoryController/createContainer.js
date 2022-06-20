@@ -14,7 +14,11 @@ mutation AddContainer($input: ContainerInput!) {
 }
 `;
 
+/*
+	create a new container
+*/
 async function createContainer() {
+	// get the values from the form
 	const itemName = document.querySelector('#name-field').value;
 	const itemDescription = document.querySelector('#description-field').value;
 	const itemPrice = Number(document.querySelector('#price-field').value);
@@ -24,6 +28,7 @@ async function createContainer() {
 	const itemType = document.querySelector('#type-field').value;
 	const itemLabel = document.querySelector('#label-field').checked;
 
+	// check if the values are ok
 	if (
 		itemName &&
 		typeof itemPrice === 'number' &&
@@ -32,6 +37,7 @@ async function createContainer() {
 		itemYear <= new Date().getFullYear() &&
 		itemPrice > 0
 	) {
+		// create the payload
 		const itemPayload = {
 			name: itemName,
 			description: itemDescription,
@@ -44,6 +50,7 @@ async function createContainer() {
 			owner: JSON.parse(localStorage.getItem('userData')).username,
 		};
 
+		// send the payload to the server
 		const res = await fetch(API, {
 			method: 'POST',
 			body: JSON.stringify({
@@ -60,6 +67,7 @@ async function createContainer() {
 
 		console.log(createdContainer);
 
+		// redirect to the containers page
 		window.location.replace('/Frontend/personal-containers.html');
 	} else {
 		console.log('Invalid item data');

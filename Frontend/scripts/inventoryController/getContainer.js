@@ -15,7 +15,9 @@ query Container($id: ID!) {
 }
 `;
 
+// get container with id @containerId
 async function getContainer(containerId = null) {
+	// perform request to server to get container data
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -30,6 +32,7 @@ async function getContainer(containerId = null) {
 
 	const container = await res.json();
 
+	// populate container data in the UI
 	const containerName = document.querySelector('.main-greeting');
 	const containerDescription = document.querySelector('.container-description');
 	const containerDetails = document.querySelector('.container-details');
@@ -38,6 +41,7 @@ async function getContainer(containerId = null) {
 	containerName.innerHTML = containerData.name;
 	containerDescription.innerHTML = containerData.description;
 
+	// create html element to display info about container
 	containerDetails.innerHTML = `
         <img
             src="${containerData.imageUrl}"

@@ -15,7 +15,9 @@ mutation UpdateCollection($id: ID!, $input: CollectionInput!) {
 }
 `;
 
+// update the collection with id @collectionId
 async function updateCollection(collectionId) {
+	// get the new values from th form
 	const collectionName = document.querySelector('#name-field').value;
 	const collectionDescription =
 		document.querySelector('#description-field').value;
@@ -23,12 +25,14 @@ async function updateCollection(collectionId) {
 	const selectedContainers = document.querySelectorAll('.selected-card');
 
 	const selectedIds = [];
+	// get the ids of the selected containers
 	for (cardElem of selectedContainers) {
 		selectedIds.push(cardElem.getAttribute('data-testid'));
 	}
 
 	console.log(selectedIds);
 
+	// create the payload for the BE
 	const collectionPayload = {
 		name: collectionName,
 		description: collectionDescription,
@@ -39,6 +43,7 @@ async function updateCollection(collectionId) {
 
 	console.log(collectionPayload);
 
+	// perform the update mutation
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -55,5 +60,6 @@ async function updateCollection(collectionId) {
 
 	console.log(updatedCollection);
 
+	// redirect to the newly edited collection
 	window.location.replace(`/Frontend/collections.html?id=${collectionId}`);
 }

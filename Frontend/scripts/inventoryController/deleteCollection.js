@@ -16,6 +16,7 @@ mutation DeleteCollection($id: ID!) {
 `;
 
 async function deleteCollection(collectionId) {
+	// send delete reuqest to server to delete collection with id @collectionId
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -32,5 +33,6 @@ async function deleteCollection(collectionId) {
 
 	console.log(deletedCollection);
 
+	// redirect to collections page
 	window.location.replace('/Frontend/personal-collections.html');
 }

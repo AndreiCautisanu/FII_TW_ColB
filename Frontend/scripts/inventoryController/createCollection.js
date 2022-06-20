@@ -42,6 +42,9 @@ mutation AddCollection($input: CollectionInput!) {
 }
 `;
 
+/*
+	set card styling based on whether or not it is selected
+*/
 function setSelectable() {
 	const itemCards = document.querySelectorAll('.collection-card');
 
@@ -57,7 +60,11 @@ function setSelectable() {
 	});
 }
 
+/*
+	create a new collection
+*/
 async function createCollection() {
+	// get the values from the form
 	const collectionName = document.querySelector('#name-field').value;
 	const collectionDescription =
 		document.querySelector('#description-field').value;
@@ -65,12 +72,14 @@ async function createCollection() {
 	const selectedContainers = document.querySelectorAll('.selected-card');
 
 	const selectedIds = [];
+	// get the ids of the selected cards
 	for (cardElem of selectedContainers) {
 		selectedIds.push(cardElem.getAttribute('data-testid'));
 	}
 
 	console.log(selectedIds);
 
+	// create the payload
 	const collectionPayload = {
 		name: collectionName,
 		description: collectionDescription,
@@ -79,6 +88,7 @@ async function createCollection() {
 		containers: selectedIds,
 	};
 
+	// send the payload to the server
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -95,6 +105,7 @@ async function createCollection() {
 
 	console.log(createdCollection);
 
+	// redirect to the new collection
 	window.location.replace(
 		`/Frontend/collections.html?id=${createdCollection.data.addCollection.id}`
 	);

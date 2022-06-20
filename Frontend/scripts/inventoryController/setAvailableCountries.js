@@ -1,3 +1,4 @@
+// util function to set the available world countries to the form dropdown
 const countries = [
 	'Afghanistan',
 	'Albania',
@@ -207,6 +208,7 @@ const countries = [
 	'Zimbabwe',
 ];
 
+// for each country, create an <option> element and append it to the dropdown
 function setCountriesSelect() {
 	const selectBox = document.getElementById('country-field');
 	for (let i = 0; i < countries.length; i++) {

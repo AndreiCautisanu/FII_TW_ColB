@@ -1,3 +1,4 @@
+// function used to filter the containers based on country, label, year, type and price
 function getFilteredContainers() {
 	filteredContainers = currentContainers;
 
@@ -12,9 +13,12 @@ function getFilteredContainers() {
 		document.querySelector('#price-ge-field').value
 	);
 
+	// first clean the wrapper to only add the filtered containers to it
 	const cardsContainer = document.querySelector('.all-collections-container');
 	cardsContainer.innerHTML = '';
 
+	// only filter if the filter does not have the default value
+	// same for the other filters below
 	if (itemCountry !== 'all') {
 		filteredContainers = filteredContainers.filter(
 			(container) => container.country === itemCountry
@@ -54,6 +58,7 @@ function getFilteredContainers() {
 	console.log(currentContainers);
 	console.log(filteredContainers);
 
+	// for each container that respects the filters, create a card element and append it to the wrapper
 	filteredContainers.forEach((container) => {
 		const collectionCard = document.createElement('a');
 
@@ -74,8 +79,13 @@ function getFilteredContainers() {
 	});
 }
 
+// export the statistics on the currently displayed cards
+// if a filter is applied, the stats will refer to only those containers
+// statistics are exported to csv and pdf
+// NOTE: instead of 5 csv files, only one with the concatenated results is exported - for practical reasons only
 function getStatistics() {
 	console.log(filteredContainers);
+	// first only retrieve the values that we're interested in
 	const countries = filteredContainers.map((container) =>
 		container.country.toLowerCase()
 	);
@@ -86,6 +96,10 @@ function getStatistics() {
 	const prices = filteredContainers.map((container) => container.price);
 	const years = filteredContainers.map((container) => container.year);
 
+	// for each such field, create a reducer
+	// e.g. from an array of the form [true, true, true, false, true] (i.e. on the hasLabel field)
+	// the reducer will return the number of true / false values in the following form: {true: 4, false: 1}
+	// the same applies for the other fields below
 	const countriesCount = countries.reduce((acc, curr) => {
 		if (acc[curr]) {
 			acc[curr]++;
@@ -131,14 +145,16 @@ function getStatistics() {
 		return acc;
 	}, {});
 
+	// for the prices there are buckets created so that the values are grouped in ranges
 	const pricesBuckets = {
-		100: 0,
-		500: 0,
-		1000: 0,
-		1500: 0,
-		2000: 0,
+		100: 0, // prices below 100
+		500: 0, // prices between 100 and 500
+		1000: 0, // between 500 and 1000
+		1500: 0, // ...
+		2000: 0, // ...
 	};
 
+	// same as for the prices
 	const yearsBuckets = {
 		1900: 0,
 		1950: 0,
@@ -147,6 +163,7 @@ function getStatistics() {
 		2020: 0,
 	};
 
+	// iterating through the prices and years arrays to group them in the buckets above
 	Object.entries(pricesCount).map(([key, value]) => {
 		if (key < 100) {
 			pricesBuckets[100] += value;
@@ -191,6 +208,7 @@ function getStatistics() {
 
 	let csvStats = '';
 
+	// convert each json statistic to csv string
 	const countryStats = convertJsonToCsv([countriesCount]);
 	const labelsStats = convertJsonToCsv([labelsCount]);
 	const typesStats = convertJsonToCsv([typesCount]);

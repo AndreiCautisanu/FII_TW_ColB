@@ -15,9 +15,12 @@ query Collection($id: ID!) {
 }
 `;
 
+// global variable to store current collection data (to not make the same request twice on a page)
 let currentCollection;
 
+// get collection with id @collectionId
 async function getCollection(collectionId = null) {
+	// retrieve collection with id @collectionId
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -32,11 +35,13 @@ async function getCollection(collectionId = null) {
 
 	const collection = await res.json();
 
+	// select html elements to display collection info
 	const collectionName = document.querySelector('.main-greeting');
 	const collectionNameField = document.querySelector('.name-field');
 	const collectionDescription = document.querySelector('.description-field');
 	const collectionImageUrl = document.querySelector('.image-field');
 
+	// display collection info
 	const collectionData = collection.data.collection;
 	collectionName.innerHTML = collectionData.name;
 	collectionDescription.innerHTML = collectionData.description;
@@ -50,6 +55,7 @@ async function getCollection(collectionId = null) {
 	return collectionData;
 }
 
-getCollection(collectionIdParam).then((collection) => {
-	currentCollection = collection;
-});
+// save current collection to global variable
+// getCollection(collectionIdParam).then((collection) => {
+// 	currentCollection = collection;
+// });

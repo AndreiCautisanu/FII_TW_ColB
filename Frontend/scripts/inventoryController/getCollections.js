@@ -15,11 +15,13 @@ query {
 }
 `;
 
+// retrieve all collections from the server
 async function getCollections(
 	owner = null,
 	limit = null,
 	wrapperClass = '.all-collections-container'
 ) {
+	// send request to server to get all collections
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -33,20 +35,24 @@ async function getCollections(
 
 	const collections = await res.json();
 
+	// select collections container html element to append the retrieved collections
 	const collectionsContainer = document.querySelector(wrapperClass);
 
 	let userCollections = collections.data.collections;
 
+	// if owner is set, filter collections by owner
 	if (owner) {
 		userCollections = userCollections.filter(
 			(collection) => collection.owner === owner
 		);
 	}
 
+	// if limit is set, limit the number of collections to display
 	if (limit) {
 		userCollections = userCollections.slice(0, limit);
 	}
 
+	// loop through all collections and create a card for each collection
 	userCollections.forEach((collection) => {
 		const collectionCard = document.createElement('a');
 		collectionCard.setAttribute(
@@ -64,6 +70,7 @@ async function getCollections(
 		collectionsContainer.prepend(collectionCard);
 	});
 
+	// if no collections are found, display a message
 	if (userCollections.length === 0) {
 		const noCollections = document.createElement('div');
 		noCollections.classList.add('no-elements');

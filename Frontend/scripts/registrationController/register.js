@@ -7,12 +7,15 @@ mutation SignUp($input: SignUpInput!) {
 }
 `;
 
+// function to register a new user
 async function register() {
+	// retrieve the username and password from the form
 	const username = document.querySelector('#username-field').value;
 	const password = document.querySelector('#password-field').value;
 
 	if (username && password) {
 		try {
+			// perform the registration mutation
 			const res = await fetch(API, {
 				method: 'POST',
 				body: JSON.stringify({

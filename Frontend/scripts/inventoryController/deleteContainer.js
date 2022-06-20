@@ -15,6 +15,7 @@ mutation DeleteContainer($id: ID!) {
 `;
 
 async function deleteContainer(containerId) {
+	// send delete reuqest to server to delete container with id @containerId
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -31,5 +32,6 @@ async function deleteContainer(containerId) {
 
 	console.log(deletedContainer);
 
+	// redirect to containers page
 	window.location.replace('/Frontend/personal-containers.html');
 }

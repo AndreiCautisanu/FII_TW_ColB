@@ -15,12 +15,17 @@ query {
 }
 `;
 
+// get containers without collection
+// parameters are used to make the function reusable
+// this function is used to get all the available containers when creating a new collection
+// plus to display the valid containers when editing an already existing one
 async function getContainersWithoutCollection(
 	limit = null,
 	owner = null,
 	wrapperClass = '.selectable-items-wrapper',
 	wrapperElement = 'div'
 ) {
+	// send the request to BE
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -34,20 +39,24 @@ async function getContainersWithoutCollection(
 
 	const items = await res.json();
 
+	// select the html wrapper element to add the cards to
 	const collectionsContainer = document.querySelector(wrapperClass);
 
 	let userContainers = items.data.containersWithoutCollection;
 
+	// limit the number of containers to display if necessary
 	if (limit) {
 		userContainers = userContainers.slice(0, limit);
 	}
 
+	// only select the personal containers is necessary
 	if (owner) {
 		userContainers = userContainers.filter(
 			(collection) => collection.owner === owner
 		);
 	}
 
+	// for each such card, append it to the wrapper
 	userContainers.forEach((container) => {
 		const collectionCard = document.createElement(wrapperElement);
 		if (wrapperElement === 'a') {

@@ -9,6 +9,7 @@ function checkLoggedIn() {
 	try {
 		const decodedToken = atob(localStorage.getItem('jwt').split('.')[1]);
 	} catch (e) {
+		// if the token cannot be decoded, it means it's not valid
 		window.location.replace('/Frontend/login.html'); // redirect to Login if the token is not valid
 	}
 }

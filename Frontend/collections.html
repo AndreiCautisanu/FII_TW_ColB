@@ -11,8 +11,8 @@
 		<script src="scripts/constants.js"></script>
 		<script src="scripts/loginController/checkLoggedIn.js"></script>
 		<script src="scripts/inventoryController/queryParamsRetrieval.js"></script>
-		<script src="scripts/inventoryController/getContainers.js"></script>
 		<script src="scripts/inventoryController/getCollection.js"></script>
+		<script src="scripts/inventoryController/getContainers.js"></script>
 		<script src="scripts/exportController/download.js"></script>
 		<script src="scripts/exportController/exportCollection.js"></script>
 		<script src="scripts/inventoryController/deleteCollection.js"></script>
@@ -21,7 +21,11 @@
 			defer
 		></script>
 		<script>
-			getContainers(collectionIdParam);
+			getCollection(collectionIdParam)
+				.then((collection) => {
+					currentCollection = collection;
+				})
+				.then(() => getContainers(collectionIdParam));
 		</script>
 	</head>
 

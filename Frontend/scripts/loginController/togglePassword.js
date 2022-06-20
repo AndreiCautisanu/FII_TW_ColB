@@ -1,3 +1,4 @@
+// utils file to toggle the password visibility by changing the type of the input from password to text and vice-versa
 const passwordToggleOff = document.getElementById('password-invisible');
 const passwordToggleOn = document.getElementById('password-visible');
 const password = document.querySelector('#password-field');

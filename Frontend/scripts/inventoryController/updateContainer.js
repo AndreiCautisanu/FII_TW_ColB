@@ -30,7 +30,9 @@ mutation UpdateContainer($id: ID!, $input: ContainerInput!) {
 }
 `;
 
+// function to update the container with id @containerId
 async function updateContainer(containerId) {
+	// retrieve the new values from the form
 	const itemName = document.querySelector('#name-field').value;
 	const itemDescription = document.querySelector('#description-field').value;
 	const itemPrice = Number(document.querySelector('#price-field').value);
@@ -40,6 +42,7 @@ async function updateContainer(containerId) {
 	const itemType = document.querySelector('#type-field').value;
 	const itemLabel = document.querySelector('#label-field').checked;
 
+	// check if the form is valid
 	if (
 		itemName &&
 		typeof itemPrice === 'number' &&
@@ -48,6 +51,7 @@ async function updateContainer(containerId) {
 		itemYear <= new Date().getFullYear() &&
 		itemPrice > 0
 	) {
+		// create the payload for the BE
 		const itemPayload = {
 			name: itemName,
 			description: itemDescription,
@@ -60,6 +64,7 @@ async function updateContainer(containerId) {
 			owner: JSON.parse(localStorage.getItem('userData')).username,
 		};
 
+		// perform the update mutation
 		const res = await fetch(API, {
 			method: 'POST',
 			body: JSON.stringify({
@@ -76,13 +81,16 @@ async function updateContainer(containerId) {
 
 		console.log(updatedContainer);
 
+		// redirect to the recently updated container page
 		window.location.replace(`/Frontend/containers.html?id=${containerId}`);
 	} else {
 		console.log('Invalid item data');
 	}
 }
 
+// first populate the form with the data of the container with id @containerId
 async function initUpdateForm(containerId) {
+	// retrieve the container info from the BE
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -97,6 +105,7 @@ async function initUpdateForm(containerId) {
 
 	const container = await res.json();
 
+	// select the form input fields html elements and update their values with container data
 	const containerData = container.data.container;
 	document.querySelector('#name-field').value = containerData.name;
 	document.querySelector('#description-field').value =

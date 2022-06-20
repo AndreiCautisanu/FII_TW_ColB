@@ -1,3 +1,4 @@
+// util function to export a collection in json format
 function exportCollection() {
 	downloadTextfile(
 		`${currentCollection.name}.json`,

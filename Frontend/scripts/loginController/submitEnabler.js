@@ -1,3 +1,4 @@
+// util file to only enable the submit button on the login & signup screens only if all the fields are filled
 const submitButton = document.querySelector('.submit-btn');
 const usernameField = document.querySelector('#username-field');
 const passwordField = document.querySelector('#password-field');

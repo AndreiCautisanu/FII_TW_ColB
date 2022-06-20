@@ -17,6 +17,8 @@ query Query($collectionId: ID) {
 
 let currentContainers = [];
 
+// get all containers from the server
+// parameters are used to make the function reusable
 async function getContainers(
 	collectionId = null,
 	limit = null,
@@ -25,6 +27,7 @@ async function getContainers(
 	wrapperElement = 'a',
 	setSelected = false
 ) {
+	// send request to server to get all containers
 	const res = await fetch(API, {
 		method: 'POST',
 		body: JSON.stringify({
@@ -39,22 +42,26 @@ async function getContainers(
 
 	const items = await res.json();
 
+	// select containers container html element to append the retrieved containers
 	const collectionsContainer = document.querySelector(wrapperClass);
 
 	let userContainers = items.data.containers;
 
+	// if owner is set, filter containers by owner
 	if (owner) {
 		userContainers = userContainers.filter(
 			(container) => container.owner === owner
 		);
 	}
 
+	// if limit is set, limit the number of containers to display
 	if (limit) {
 		userContainers = userContainers.slice(0, limit);
 	}
 
 	currentContainers = userContainers;
 
+	// loop through all containers and create a card for each container
 	userContainers.forEach((container) => {
 		const collectionCard = document.createElement(wrapperElement);
 		if (wrapperElement === 'a') {
@@ -76,11 +83,13 @@ async function getContainers(
 		collectionsContainer.prepend(collectionCard);
 	});
 
+	//  add control buttons to the page
 	if (collectionId && document.querySelector('.control-buttons')) {
-		addActionButtons(userContainers[0].owner, collectionId);
+		addActionButtons(currentCollection.owner, collectionId);
 	}
 
-	if (userContainers.length === 0) {
+	// if there are no containers in the collection, display a message
+	if (userContainers.length === 0 && wrapperElement === 'a') {
 		const noContainers = document.createElement('div');
 		noContainers.classList.add('no-elements');
 		noContainers.innerHTML = `<div class="no-elements-text" style="margin-bottom: 16px"> No containers collected </div>`;
@@ -88,6 +97,8 @@ async function getContainers(
 	}
 }
 
+// create & add control buttons to the page: edit & delete
+// add the buttons only if the user is the owner of the container
 function addActionButtons(containerOwner, containerId) {
 	const actionButtons = document.querySelector('.control-buttons');
 	if (
