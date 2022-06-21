@@ -50,6 +50,7 @@ async function getContainer(containerId = null) {
         />
         <div class="container-details-container">
             <label>Name: ${containerData.name}</label>
+            <label>Owner: ${containerData.owner}</label>
             <label>Type: ${containerData.type}</label>
             <label>Year: ${containerData.year}</label>
             <label>Price: $${containerData.price}</label>

@@ -78,7 +78,7 @@ async function getContainers(
         <div class="card-gradient ${
 					setSelected ? 'selected-card' : ''
 				}" data-testid=${container.id}></div>
-        <label class="card-label">${container.name}</label>
+        <span class="card-label">${container.name}</span>
     </div>`;
 		collectionsContainer.prepend(collectionCard);
 	});

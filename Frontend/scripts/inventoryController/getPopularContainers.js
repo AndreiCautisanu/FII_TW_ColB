@@ -67,7 +67,7 @@ async function getPopularContainers(
             alt=""
         />
         <div class="card-gradient" data-testid=${container.id}></div>
-        <label class="card-label">${container.name}</label>
+        <span class="card-label">${container.name}</span>
     </div>`;
 		collectionCardViewsWrap.appendChild(collectionCard);
 		collectionsContainer.appendChild(collectionCardViewsWrap);

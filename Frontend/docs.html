@@ -59,81 +59,54 @@
 			<section id="architecture">
 				<h2>Arhitectura</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
+					Aplicatia foloseste un server GraphQL care poate fi queried pentru informatiile cerute de catre client.
 				</p>
 
-				<figure typeof="sa:image">
-					<img src="architecture.png" alt="architecture diagram" />
-					<figcaption>Arhitectura aplicatiei</figcaption>
-				</figure>
+				
 			</section>
 
 			<section id="tehnologii">
 				<h2>Tehnologii si concepte folosite</h2>
 				<p>Urmatoarele tehnologii si concepte au fost folosite:</p>
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
-				</p>
+				<ul>
+					<li>HTML</li>
+					<li>CSS</li>
+					<li>JavaScript</li>
+					<li>TypeScript</li>
+					<li>GraphQL</li>
+					<li>Node</li>
+				</ul>
 			</section>
 
 			<section id="api">
 				<h2>API</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
+					API-ul este reprezentat de un server GraphQL care asculta pe port-ul 8000 request-uri de la clienti si executa query-uri pe baza de date SQLite pentru a returna datele cerute.
 				</p>
 			</section>
 			<section id="Frontend">
 				<h2>Frontend</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
+					Utilizatorii logati pot
 				</p>
+				<ul>
+					<li>- crea recipiente noi</li>
+					<li>- crea colectii noi la care sa adauge recipientele create</li>
+					<li>- sterge si edita colectiile si recipientele proprii</li>
+					<li>- vizualiza recipiente adaugate de alti utilizatori</li>
+					<li>- vizualiza top al celor mai populare recipiente</li>
+				</ul>
 			</section>
 			<section id="Securitate">
 				<h2>Securitate</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
+					Parolele stocate in baza de date sunt encriptate folosind algoritmul SHA256
 				</p>
 			</section>
 			<section id="Performanta">
 				<h2>Performanta</h2>
 				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-					non leo urna. Mauris ac neque ex. Sed tristique efficitur dolor vitae
-					rutrum. Morbi bibendum quam vitae tempor hendrerit. In leo neque,
-					finibus vitae pharetra vel, blandit sollicitudin felis. Vestibulum
-					ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-					curae; Donec porta a tellus et luctus. Pellentesque mattis diam id
-					pulvinar mollis.
+					API-ul GraphQL permite un nivel de performanta mai ridicat decat REST, intrucat clientii pot cere strict datele de care au nevoie de la server, evitandu-se fenomenele de overfetching si underfetching. Datele returnate urmaresc structura definita in query-ul trimis de client.
 				</p>
 			</section>
 		</div>
